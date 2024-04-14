@@ -1,1 +1,103 @@
-<h1>Hello World</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Girlfriend's Birthday Surprise</title>
+  <!-- Link to jQuery from a CDN -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+  <link rel="stylesheet" href="styles.css">
+
+</head>
+<body>
+	<!-- Speaker icon -->
+  <div id="speakerIcon" class="speaker-icon">
+    <img src="volume-up-fill.svg" alt="Speaker Icon" id="speakerBtn" onclick="toggleSound()">
+  </div>
+
+  <!-- Background music -->
+  <audio id="bgMusic" loop autoplay>
+    <source src="ElNath.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+
+  <h1 id="bday-text" class="birthday-text"><span>HAPPY</span>
+    <span>BIRTHDAY</span>
+    <span>JUDY!!</span></h1>
+
+  <div id="landingPage" class="centered">
+    <img src="bear-kiss-bear-kisses.gif" alt="Cute GIF" class="gif">
+    <div class="password-container">
+      <input type="password" id="passwordInput" placeholder="Enter password" title="Hint: Try the birthday date">
+      <button id="togglePasswordBtn" onclick="togglePasswordVisibility()">
+        <img id="eyeIcon" src="eye.svg" alt="Toggle Password Visibility">
+      </button>
+    </div>
+  </div>
+
+   <div id="loadingScreen" class="loading-screen hidden">
+    <div class="progress">
+      <div class="color"></div>
+    </div>
+  </div>
+
+  <div id="hiddenContent" class="hidden">
+  	<div id="overlay" class="overlay"></div>
+    <figure id="figure1" class="polaroid hidden-polaroid" onclick="expandPolaroid(this, 'One of the many highlights from the Japan trip and one of the photos that had a lot of potential (somehow the lighting got ruined in this photo) but ending off the teamlabs at this lantern lake area was a vibe, and it\'s pretty cute when random people try to cook our photos for us hahaha. Anyway.. looking back at this photo and many others, it just makes me that much more excited to go on more trips with you. You are the best travel companion ~')" data-delay="-500">
+        <img src="img1.jpg" alt="my_photo">
+        <figcaption>Cute Memories</figcaption>
+    </figure>
+    <figure id="figure2" class="polaroid hidden-polaroid" onclick="expandPolaroid(this, 'Shoutout to JT for suggesting the best couple doodle app where I was blessed with the photo from the gods.. Even though the unlimited coupon is no longer valid(T_T), this still came out of it!! I remember when you sent this I had to save it to my photos, even though the app gave me some trouble saving it, I got it in the end and is still one of my favorite photos to date!')" data-delay="500">
+        <img src="img2.jpg" alt="my_photo">
+        <figcaption>Goat Photo</figcaption>
+    </figure>
+    <figure id="figure3" class="polaroid hidden-polaroid" onclick="expandPolaroid(this, 'I remember when you first suggested renting a kimono and yukata I was like ouch.. that shit is EXPENSIVE. BUT after doing so I think it was a lot of fun and very worth it :). I think this photo is SLEPT on cause I think it looks very good!! You rocked that kimono and maybe next time... we can rent out those korean hanboks in Korea!')" data-delay="950">
+        <img src="img3.jpg" alt="my_photo">
+        <figcaption>Kimono Queen</figcaption>
+    </figure>
+    <figure id="figure4" class="polaroid hidden-polaroid" onclick="expandPolaroid(this, 'CAN\'T TELL WHAT IS SHINING BRIGHTER, YOUR EYES OR THE LIGHTS BEHIND YOU????')" data-delay="1350">
+        <img src="img4.jpg" alt="my_photo">
+        <figcaption>Sparkle</figcaption>
+    </figure>
+    <figure id="figure5" class="polaroid hidden-polaroid" onclick="expandPolaroid(this, 'I know that it was just the other day I was telling you about this photo. But for some reason when I look at this you\'re just so cute that I found myself giggling everytime I went back to look at the photo HAHA. I still think I look like a goof but you carried this photo kween')" data-delay="1900">
+        <img src="img5.jpg" alt="my_photo">
+        <figcaption>Cutie</figcaption>
+    </figure>
+    <div id="heartContainer">
+  	  <div class="heart hidden-heart" id="heart1" onclick="showHeartContent(this, 'COMING SOON')" data-delay="3500"></div>
+  	  <div class="heart hidden-heart" id="heart2" onclick="showHeartContent(this, 'Hello my Jubean, \n\n Welcome to the official simonxjudy website WOOO!! I knew ever since you showed me that one tiktok of that guy who coded his gf a website this was ineviable.. so here it is! Even though it isn\'t as great as that one, this actually took a lot more time than I thought.. I forgot everything about web development sooooo anyway this was a brain refresher :D. Anyway.. as you may have already been able to tell.. I included some POLAROID memories of some of our moments together, and if you click them you will see a little short comment on each of them! The hearts.. tbh I\'m not too sure what to do with them yet. BUT, I am thinking of having them be a surprise, and I\'ll add some random things for you here and there(maybe set a release date for each heart popup HAHAHAHAH. Thought u could get 5 QCCS that easily?!?! This first heart unlocked will be a classic LETTER! I am literally typing this in the closet as you are dead asleep on my bed, and I know this gift.. is a bit late but I hope you like it!! Its quite short and if I could slowly add more things over the course of a while I think it could have a lot fun little quirky things! Anyway, enough of talking about random shEET, I just wanted to tell you agane that I am very happy to have YOU judy TANG as my beautiful girlfriend, and through the rough patches we had I know we\'ll only grow from it and become a dynamic DUO! I love you very much and thanks for making my weekends something I always look forward to <3\n\n-Seman')" data-delay="4000"></div>
+  	  <div class="heart hidden-heart" id="heart3" onclick="showHeartContent(this, 'COMING SOON')" data-delay="4450"></div>
+  	  <div class="heart hidden-heart" id="heart4" onclick="showHeartContent(this, 'COMING SOON')" data-delay="4900"></div>
+  	  <div class="heart hidden-heart" id="heart5" onclick="showHeartContent(this, 'COMING SOON')" data-delay="5250"></div>
+  	</div>
+    <div id="bottomContent" class="centered" onclick="showClickContent(this, 'Hello and thank you for clicking me, cinnabon. Please click the first heart (the bottom left one)!')">
+      <div>Click Me</div>
+      <img src="idle.png" alt="Image" class="animal-image" id="animalImage">
+    </div>
+  </div>
+  <div class="textBox hidden">
+    <p>This is the text box content.</p>
+  </div>
+  <div class="contentBox hidden">
+    <p>This is the text box content.</p>
+  </div>
+<!--   <button id="hideTextBoxesBtn" class="hide-btn">
+    <img src="x.svg" alt="Hide Text Boxes">
+  </button>
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+  // Add event listener to hide text boxes when the button is clicked
+  document.getElementById("hideTextBoxesBtn").addEventListener("click", function() {
+    var textBoxes = document.querySelectorAll(".textBox");
+    textBoxes.forEach(function(textBox) {
+      textBox.classList.remove("active");
+    });
+  });
+});
+  </script> -->
+
+  <!-- Your existing JavaScript code -->
+  <script src="script.js"></script>
+</body>
+</html>

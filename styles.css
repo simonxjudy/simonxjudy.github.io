@@ -1,0 +1,637 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f0f8f4; /* Super subtle pastel green */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.centered {
+  opacity: 0;
+  max-width: 600px;
+  padding: 50px;
+  background-color: #f0f8f4;
+}
+
+.hidden {
+  display: none;
+}
+
+.gif {
+  display: block; /* Display the image as a block-level element */
+  margin-bottom: 30px; /* Add more space between the GIF and the password field */
+  margin-top: -20px; /* Shift the GIF up */
+}
+
+#passwordInput {
+  border-radius: 10px;
+  border: 2px solid #c3e6cb;
+  padding: 10px;
+  width: 100%;
+  box-sizing: border-box;
+  color: #555; /* Color of the entered text */
+  outline: none;
+  background-color: #f0f8f4;
+}
+
+#passwordInput::placeholder {
+  color: #c3e6cb; /* Green color for the placeholder text */
+}
+
+#passwordInput:focus {
+  border-color: #28a745; /* Green tone border color when focused */
+}
+
+.password-container {
+  position: relative;
+}
+
+#togglePasswordBtn {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+#togglePasswordBtn img {
+  margin-top: 3px;
+  width: 18px; /* Adjust icon size as needed */
+  fill: #28a745; /* Green color */
+}
+
+#passwordInput {
+  padding-right: 30px; /* Ensure space for the eye icon */
+}
+
+/* Position the loading bar in the center of the screen */
+.progress {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 500px; /* Adjust width as needed */
+  border: 5px solid #ffffff;
+  border-radius: 15px;
+  height: 10px;
+  background-color: #ffffff;
+}
+
+.progress .color {
+  position: absolute;
+  background-color: #28a745;
+  height: 10px;
+  border-radius: 15px;
+  animation: progress 7.2s linear forwards; /* Changed animation to linear */
+  animation-play-state: paused; /* Initially paused */
+}
+
+@keyframes progress {
+  0% {
+    width: 0%;
+  }
+  25% {
+    width: 50%;
+  }
+  50% {
+    width: 75%;
+  }
+  75% {
+    width: 85%;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+*,
+*:before,
+*:after{
+    padding: 0;
+    margin: 0;
+}
+
+figure{
+    width: 160px;
+    height: 203px;
+    position: absolute; /* Change position to absolute */
+    background-color: #eaeaea;
+}
+
+figure img {
+    width: 100%; /* Set the image width to fill the container */
+    height: auto; /* Automatically adjust the height to maintain proportions */
+    max-height: 100%; /* Ensure the image does not exceed the container height */
+    display: block; /* Ensure the image is displayed as a block element */
+}
+
+
+#figure1 {
+    top: 13%; /* Position from the top */
+    left: 100px; /* Adjust the left position as needed */
+    transform: rotate(-10deg);
+    padding: 19px 19px 2px 19px;
+}
+
+#figure2 {
+    top: 7%; /* Position from the top */
+    left: 625px; /* Adjust the left position as needed */
+    transform: rotate(-5deg);
+    padding: 19px 19px 44px 19px;
+}
+
+#figure3 {
+    top: 20%; /* Position from the top */
+    right: 120px; /* Adjust the left position as needed */
+    transform: rotate(10deg);
+    padding: 19px 19px 72px 19px;
+}
+
+#figure4 {
+    top: 50%; /* Position from the top */
+    left: 875px; /* Adjust the left position as needed */
+    transform: rotate(-5deg);
+    padding: 19px 19px 72px 19px;
+}
+
+#figure5 {
+    top: 45%; /* Position from the top */
+    right: 905px; /* Adjust the left position as needed */
+    transform: rotate(10deg);
+    padding: 19px 19px 76px 19px;
+}
+
+
+
+figure img{
+    width: 100%;
+}
+figcaption{
+    font-family: 'Caveat',cursive;
+    font-size: 22px;
+    text-align: center;
+    color: #2c2c2c;
+    margin-top: 22px;
+}
+figure:before,
+figure:after{
+    content: "";
+    position: absolute;
+    height: 40px;
+    width: 150px;
+    background-color: rgba(127, 255, 212,0.3);
+    transform: rotate(-40deg);
+}
+figure:before{
+    top: 3px;
+    left: -55px;
+}
+figure:after{
+    bottom: 3px;
+    right: -60px;
+}
+
+.password-container {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s cubic-bezier(0.25, 0.1, 0.25, 1.2), transform 1s cubic-bezier(0.25, 0.1, 0.25, 1.2);
+}
+
+.password-container.fade-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.speaker-icon {
+  display: none;
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 9999; /* Ensure it's above other elements */
+}
+
+.speaker-icon img {
+  width: 25px;
+  cursor: pointer;
+}
+
+/* CSS for animating the polaroid */
+.polaroid {
+  transition: transform 0.5s ease-in-out;
+}
+
+#figure1.expanded, #figure2.expanded, #figure3.expanded, #figure4.expanded, #figure5.expanded {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(2);
+  z-index: 9999;
+}
+
+/* CSS for the background tint */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Adjust opacity as needed */
+  backdrop-filter: blur(5px); /* Add blur effect */
+  z-index: 9998; /* Ensure it's below the expanded polaroid */
+  display: none; /* Initially hidden */
+}
+
+.overlay.active {
+  display: block;
+}
+
+.hidden-polaroid, .hidden-heart {
+  opacity: 0;
+}
+
+.stamped {
+  /* Add your stamping animation styles here */
+  opacity: 0;
+  animation: stamp 0.5s ease-out forwards;
+}
+
+@keyframes stamp {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.textBox {
+  position: fixed;
+  top: 50%;
+  left: 80%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(255, 255, 255, 0.8); /* Adjust opacity as needed */
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 9999; /* Ensure it's above other elements */
+  display: none;
+}
+
+.textBox.active {
+  display: block; /* Show the text box when active */
+}
+
+.contentBox {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(255, 255, 255, 0.8); /* Adjust opacity as needed */
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 9999; /* Ensure it's above other elements */
+  display: none;
+}
+
+.contentBox.active {
+  display: block; /* Show the text box when active */
+}
+
+#heartContainer {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.heart {
+  position: absolute;
+  width: 50px; /* Adjust width as needed */
+  height: 50px; /* Adjust height as needed */
+  background-image: url('heart.png'); /* Replace 'heart.png' with your heart icon */
+  background-size: cover;
+  background-repeat: no-repeat;
+  cursor: pointer;
+}
+
+
+
+#heart1 {
+  top: 200px;
+  left: 500px;
+  transform: rotate(22deg);
+}
+
+#heart2 {
+  top: 135px;
+  right: 480px;
+  transform: rotate(-15deg);
+}
+
+#heart3 {
+  bottom: 120px;
+  left: 200px;
+  transform: rotate(30deg);
+}
+
+#heart4 {
+  bottom: 150px;
+  right: 200px;
+  transform: rotate(-10deg);
+}
+
+#heart5 {
+  top: calc(50% + 130px);
+  left: calc(50% - 50px);
+}
+
+/* CSS for the polaroid wrapper */
+.polaroid:hover {
+  border: 2px solid #93D3A2;
+  border-radius: 5px;
+  cursor: pointer; /* Change cursor to pointer on hover */
+}
+
+/* CSS for the heart wrapper */
+.heart:hover {
+  border: 2px solid #f0f8f4;
+  cursor: pointer; /* Change cursor to pointer on hover */
+}
+
+.hide-btn {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 9999;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+.hide-btn img {
+  width: 30px; /* Adjust width as needed */
+  height: 30px; /* Adjust height as needed */
+}
+
+.hide-btn img:hover {
+  opacity: 0.5;
+  cursor: pointer;
+}
+
+.polaroid {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Adjust the shadow color and intensity as needed */
+}
+
+.birthday-text {
+  position: absolute;
+  top: 70px; /* Adjust as needed */
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 50px;
+  opacity: 0;
+  animation: fadeInWords 5s forwards;
+  font-family: Comic Sans MS;
+}
+
+@keyframes fadeInWords {
+  0% {
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  25% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* Individual word animation */
+.birthday-text span {
+  opacity: 0;
+  animation: fadeInWord 2s forwards;
+}
+
+@keyframes fadeInWord {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* Delay each word's animation */
+.birthday-text span:nth-child(2) {
+  animation-delay: 1s;
+}
+
+.birthday-text span:nth-child(3) {
+  animation-delay: 1.7s;
+}
+
+.birthday-text span:nth-child(4) {
+  animation-delay: 2.4s;
+}
+
+#bottomContent {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex; /* Use flexbox */
+  align-items: center; /* Align items vertically */
+  padding: 0;
+  background-color: transparent;
+}
+
+.click-me {
+  font-size: 18px;
+  margin-right: 10px; /* Add some space between the text and the image */
+}
+
+.animal-image {
+  width: 150px; /* Adjust image width as needed */
+  height: auto; /* Maintain aspect ratio */
+  transition: background-image 0.3s ease; /* Add transition for smooth effect */
+}
+
+#bottomContent:hover {
+  cursor: pointer;
+  border-bottom: 0.5px solid grey;
+}
+
+h1,
+p {
+  font-family: 'Hind', sans-serif;
+}
+
+p{
+  text-indent: 50px;
+}
+
+h1 {
+  font-weight: 200;
+}
+
+body {
+  margin: 0px;
+}
+
+.container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.heartsu {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  text-align: center;
+  transform: translate(-50%, -50%);
+  transiton: transform 2s;
+  z-index: 1;
+}
+
+.heartsu > img {
+  width: 50px;
+  height: auto;
+}
+
+.message {
+  padding: 20px;
+  background-color: #eee;
+  min-width: 400px;
+  height: 75%;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 0;
+  overflow: hidden;
+  animation-name: openmsg;
+  animation-duration: 2s;
+  animation-timing-function: linear;
+  animation-play-state: paused;
+  animation-fill-mode: forwards;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+  border-radius: 5px;
+}
+
+.heartsu > img:hover {
+  animation-name: beat;
+  animation-duration: 2s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-play-state: running;
+}
+
+#messageState {}
+
+@keyframes beat {
+  0% {
+    width: 50px;
+  }
+  25% {
+    width: 58px;
+  }
+  30% {
+    width: 50px;
+  }
+  50% {
+    width: 45px;
+  }
+  60% {
+    width: 50px;
+  }
+  75% {
+    width: 58px;
+  }
+  100% {
+    width: 50px;
+  }
+}
+
+@keyframes openmsg {
+  0% {
+    height: 0px;
+    padding: 0px 20px;
+  }
+  100% {
+    height: 75%;
+    padding: 20px 20px;
+  }
+}
+
+@keyframes heartMove {
+  0% {
+    top: 50%
+  }
+  100% {
+    top: 85%;
+    transform: translate(-50%, 0);
+  }
+}
+
+.openNor {
+  animation-direction: normal;
+  animation-play-state: running;
+}
+
+.closeNor {
+  animation-direction: reverse;
+  animation-play-state: running;
+}
+
+.no-anim {
+  animation: none;
+}
+
+.closed {
+  height: 0px;
+  padding: 0px 20px;
+}
+
+.bottom {
+  bottom: 5px;
+}
+
+.openHer {
+  animation-name: heartMove;
+  animation-duration: 2s;
+  animation-timing-function: linear;
+  animation-play-state: running;
+  animation-fill-mode: forwards;
+}
+
+.closeHer {
+  animation-name: heartMove;
+  animation-duration: 2s;
+  animation-timing-function: linear;
+  animation-play-state: running;
+  animation-direction: reverse;
+  animation-fill-mode: forwards;
+}
+
+.beating > img {
+  animation-name: beat;
+  animation-duration: 2s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-play-state: running;
+}
+
+.openedHer {
+  top: 85%;
+  transform: translate(-50%, 0);
+}
+
+
